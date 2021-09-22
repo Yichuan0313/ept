@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BMI</string>
+    <string name="hello">你好世界</string>
+    <string name="hp">生日快乐！</string>
+    <string name="sign">from 唐一川</string>
+</resources>
