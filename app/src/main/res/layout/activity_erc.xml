@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ErcActivity">
+
+    <TextView
+        android:id="@+id/pgm_title"
+        android:layout_width="294dp"
+        android:layout_height="67dp"
+        android:gravity="center"
+        android:text="Exchange rate conversion"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.086" />
+
+    <EditText
+        android:id="@+id/yuan_input"
+        android:layout_width="253dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="27dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="please input number"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pgm_title"
+        app:layout_constraintVertical_bias="0.007" />
+
+    <Button
+        android:id="@+id/ex_1"
+        android:layout_width="176dp"
+        android:layout_height="61dp"
+        android:text="DOLLAR"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/result"
+        app:layout_constraintVertical_bias="0.066" />
+
+    <Button
+        android:id="@+id/config"
+        android:layout_width="176dp"
+        android:layout_height="61dp"
+        android:text="config"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ex_3"
+        app:layout_constraintVertical_bias="0.147" />
+
+    <Button
+        android:id="@+id/ex_2"
+        android:layout_width="176dp"
+        android:layout_height="61dp"
+        android:text="EURO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ex_1"
+        app:layout_constraintVertical_bias="0.081" />
+
+    <Button
+        android:id="@+id/ex_3"
+        android:layout_width="176dp"
+        android:layout_height="61dp"
+        android:text="WON"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ex_2"
+        app:layout_constraintVertical_bias="0.104" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="256dp"
+        android:layout_height="39dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yuan_input"
+        app:layout_constraintVertical_bias="0.026" />
+</androidx.constraintlayout.widget.ConstraintLayout>
