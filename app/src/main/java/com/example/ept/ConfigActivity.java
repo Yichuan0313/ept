@@ -16,9 +16,9 @@ public class ConfigActivity extends AppCompatActivity {
         setContentView(R.layout.activity_config);
 
         final Bundle bundle=getIntent().getExtras();    //接收Extras
-        Double ex_rate1 = bundle.getDouble("ex_rate1");
-        Double ex_rate2 = bundle.getDouble("ex_rate2");
-        Double ex_rate3 = bundle.getDouble("ex_rate3");
+        float ex_rate1 = bundle.getFloat("ex_rate1");
+        float ex_rate2 = bundle.getFloat("ex_rate2");
+        float ex_rate3 = bundle.getFloat("ex_rate3");
 
         EditText rate1 = (EditText) findViewById(R.id.ex_rate1);
         rate1.setText(""+ex_rate1);
@@ -31,15 +31,15 @@ public class ConfigActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Double new_rate1 = Double.valueOf(rate1.getText().toString());
-                Double new_rate2 = Double.valueOf(rate2.getText().toString());
-                Double new_rate3 = Double.valueOf(rate3.getText().toString());
+                float new_rate1 = Float.valueOf(rate1.getText().toString());
+                float new_rate2 = Float.valueOf(rate2.getText().toString());
+                float new_rate3 = Float.valueOf(rate3.getText().toString());
 
                 Intent intent1 = getIntent();//构造Intent，用于传递数据
                 Bundle bdl = new Bundle();
-                bdl.putDouble("new_rate1",new_rate1);
-                bdl.putDouble("new_rate2",new_rate2);
-                bdl.putDouble("new_rate3",new_rate3);
+                bdl.putFloat("new_rate1",new_rate1);
+                bdl.putFloat("new_rate2",new_rate2);
+                bdl.putFloat("new_rate3",new_rate3);
                 intent1.putExtras(bdl);
                 setResult(RESULT_OK,intent1);//专门向上一个活动传递数据的
                 finish();
