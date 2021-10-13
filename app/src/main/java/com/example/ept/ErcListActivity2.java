@@ -3,14 +3,18 @@ package com.example.ept;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 
 import org.jsoup.Jsoup;
@@ -22,15 +26,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ErcListActivity2 extends AppCompatActivity implements Runnable{
+public class ErcListActivity2 extends AppCompatActivity implements Runnable, AdapterView.OnItemClickListener {
 
     public Handler handler;
     private static final String TAG = "ErcListActivity2";
+    public ListView myList2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_erc_list2);
+
+        myList2 = findViewById(R.id.my_list);
+        myList2.setOnItemClickListener(this);
 
         Thread t=new Thread(this);
         t.start();
@@ -38,9 +46,13 @@ public class ErcListActivity2 extends AppCompatActivity implements Runnable{
             public void handleMessage(Message msg){
                 if(msg.what==5){
                     ArrayList<HashMap<String,String>> listItems = (ArrayList<HashMap<String,String>>) msg.obj;
-                    SimpleAdapter my_list = new SimpleAdapter(ErcListActivity2.this,listItems,R.layout.list_item,new String[]{"ItemTitle","ItemDetail"},new int[]{R.id.itemTitle,R.id.itemDetail});
-                    ListView myList2 = findViewById(R.id.my_list);
+//                    SimpleAdapter my_list = new SimpleAdapter(ErcListActivity2.this,listItems,R.layout.list_item,new String[]{"ItemTitle","ItemDetail"},new int[]{R.id.itemTitle,R.id.itemDetail});
+                    MyAdapter my_list = new MyAdapter(ErcListActivity2.this,R.layout.list_item,listItems);
+
                     myList2.setAdapter(my_list);
+                    ProgressBar my_bar = (ProgressBar) findViewById(R.id.progressBar);
+                    my_bar.setVisibility(View.GONE);
+                    myList2.setVisibility(View.VISIBLE);
                 }
                 super.handleMessage(msg);
             }
@@ -84,5 +96,18 @@ public class ErcListActivity2 extends AppCompatActivity implements Runnable{
             e.printStackTrace();
         }
 
+    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Object itemAtPosition = myList2.getItemAtPosition(i);
+        HashMap<String,String> map = (HashMap<String, String>) itemAtPosition;
+        String Currency = map.get("ItemTitle");
+        String ex_rate = map.get("ItemDetail");
+        Intent show_interface = new Intent(ErcListActivity2.this,ErcListActivity2show.class);
+        show_interface.putExtra("Currency",Currency);
+        show_interface.putExtra("ex_rate",ex_rate);
+        startActivity(show_interface);
     }
 }
